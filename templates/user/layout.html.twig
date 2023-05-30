@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  {% block title %}
+    <title>Mysoleas dashboard</title>
+    <meta content="manage your soleas sms account friendly and build more apps" name="description">
+  {% endblock %}
+  <meta content="mysoleas, login, send sms, sms gateway, soleas sms, free sms" name="keywords">
+    
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="{{asset('user/vendors/feather/feather.css')}}">
+  <link rel="stylesheet" href="{{asset('user/vendors/ti-icons/css/themify-icons.css')}}">
+  <link rel="stylesheet" href="{{asset('user/vendors/css/vendor.bundle.base.css')}}">
+  <!-- endinject -->
+  <!-- Plugin css for this page -->
+  <link rel="stylesheet" href="{{asset('user/vendors/datatables.net-bs4/dataTables.bootstrap4.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{asset('user/js/select.dataTables.min.css')}}">
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="{{asset('user/css/vertical-layout-light/style.css')}}">
+  <!-- endinject -->
+  <link href="{{asset('img/mysoleas.png')}}" rel="shortcut icon">
+  <link href="{{asset('img/mysoleas.png')}}" rel="apple-touch-icon">
+  <meta name="robots" content="index,follow">
+  <link rel="manifest" href="{{ asset('manifest.json') }}">
+	<link rel="sitemap" type="application/xml" title="sitemap" href="/sitemap.xml">
+</head>
+<body>
+  {% block body %}
+  <div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+    <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+        <a class="navbar-brand brand-logo mr-5" href="{{path('mysoleas_home')}}"><img src="{{asset('user/images/mysoleas.png')}}" class="mr-2" alt="logo mysoleas"/></a>
+        <a class="navbar-brand brand-logo-mini" href="{{path('mysoleas_home')}}"><img src="{{asset('user/images/mysoleas.png')}}" alt="logo mysoleas"/></a>
+      </div>
+      <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+          <span class="icon-menu"></span>
+        </button>
+        <ul class="navbar-nav mr-lg-2">
+          <li class="nav-item nav-search d-none d-lg-block">
+            <div class="input-group">
+              <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
+                <span class="input-group-text" id="search">
+                  <i class="icon-search"></i>
+                </span>
+              </div>
+              <input type="text" class="form-control" id="navbar-search-input" placeholder="Search now" aria-label="search" aria-describedby="search">
+            </div>
+          </li>
+        </ul>
+        <ul class="navbar-nav navbar-nav-right">
+          <li class="nav-item dropdown">
+            <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
+              <i class="icon-bell mx-0"></i>
+              <span class="count"></span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
+              <p class="mb-0 font-weight-normal float-left dropdown-header">Notifications</p>
+              <a class="dropdown-item preview-item">
+                <div class="preview-thumbnail">
+                  <div class="preview-icon bg-warning">
+                    <i class="ti-settings mx-0"></i>
+                  </div>
+                </div>
+                <div class="preview-item-content">
+                  <h6 class="preview-subject font-weight-normal">Settings</h6>
+                  <p class="font-weight-light small-text mb-0 text-muted">
+                    Private message
+                  </p>
+                </div>
+              </a>
+              
+            </div>
+          </li>
+          <li class="nav-item nav-profile dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
+              <img src="{{asset('user/images/userDefault.png')}}" alt="profile"/>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
+              <a class="dropdown-item" href="{{path('mysoleas_profile')}}">
+                <i class="ti-user text-primary"></i>
+                {{'Profile'|trans}}
+              </a>
+              <a class="dropdown-item" href="{{path('mysoleas_logout')}}">
+                <i class="ti-power-off text-primary"></i>
+                {{'Logout'|trans}}
+              </a>
+            </div>
+          </li>
+          <li class="nav-item nav-settings d-none d-lg-flex">
+            <a class="nav-link" href="#">
+              <i class="icon-ellipsis"></i>
+            </a>
+          </li>
+        </ul>
+        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+          <span class="icon-menu"></span>
+        </button>
+      </div>
+    </nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:partials/_settings-panel.html -->
+      <div class="theme-setting-wrapper">
+        <div id="settings-trigger"><i class="ti-settings"></i></div>
+        <div id="theme-settings" class="settings-panel">
+          <i class="settings-close ti-close"></i>
+          <p class="settings-heading">SIDEBAR SKINS</p>
+          <div class="sidebar-bg-options selected" id="sidebar-light-theme"><div class="img-ss rounded-circle bg-light border mr-3"></div>Light</div>
+          <div class="sidebar-bg-options" id="sidebar-dark-theme"><div class="img-ss rounded-circle bg-dark border mr-3"></div>Dark</div>
+          <p class="settings-heading mt-2">HEADER SKINS</p>
+          <div class="color-tiles mx-0 px-4">
+            <div class="tiles success"></div>
+            <div class="tiles warning"></div>
+            <div class="tiles danger"></div>
+            <div class="tiles info"></div>
+            <div class="tiles dark"></div>
+            <div class="tiles default"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- partial -->
+      <!-- partial:partials/_sidebar.html -->
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <ul class="nav">
+          {% if is_granted('ROLE_ADMIN') %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{path('mysoleas_admin')}}">
+              <i class="icon-grid menu-icon"></i>
+              <span class="menu-title">Admin</span>
+            </a>
+          </li>
+          {% endif %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{path('mysoleas_dashboard')}}">
+              <i class="icon-grid menu-icon"></i>
+              <span class="menu-title">{{'Dashboard'|trans}}</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{path('mysoleas_sms_pack')}}">
+              <i class="icon-circle-plus menu-icon"></i>
+              <span class="menu-title">{{'Acheter un Pack'|trans}}</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{path('mysoleas_new_sms')}}">
+              <i class="icon-share menu-icon"></i>
+              <span class="menu-title">{{'Send sms'|trans}}</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{path('mysoleas_profile')}}">
+              <i class="icon-head menu-icon"></i>
+              <span class="menu-title">{{'Profile'|trans}}</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="modal" data-target="#key">
+              <i class="icon-lock menu-icon"></i>
+              <span class="menu-title">{{'Mon Apikey'|trans}}</span>
+            </a>
+          </li>
+          <!--li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+              <i class="icon-head menu-icon"></i>
+              <span class="menu-title">User Pages</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="auth">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="pages/samples/login.html"> Login </a></li>
+                <li class="nav-item"> <a class="nav-link" href="pages/samples/register.html"> Register </a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#error" aria-expanded="false" aria-controls="error">
+              <i class="icon-ban menu-icon"></i>
+              <span class="menu-title">Error pages</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="error">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="pages/samples/error-404.html"> 404 </a></li>
+                <li class="nav-item"> <a class="nav-link" href="pages/samples/error-500.html"> 500 </a></li>
+              </ul>
+            </div>
+          </li-->
+        </ul>
+      </nav>
+      <!-- partial -->
+      <div class="main-panel">
+        <div class="content-wrapper">
+          {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert alert-{{ label }} text-center" >{{ message|trans }}</div>  
+            {% endfor %}
+          {% endfor %}
+          {% block content %}
+          {% endblock %}
+        </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:partials/_footer.html -->
+        <footer class="footer">
+          <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © <strong>MySoleas</strong> 2021. All rights reserved.</span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="ti-heart text-danger ml-1"></i></span>
+          </div>
+        </footer>
+        <!-- partial -->
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+
+  <div class="modal fade" role="dialog" tabindex="-1" id="key" style="color:#000">
+    <div class="modal-dialog  modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" >{{ 'Mon Apikey'|trans }} </h3><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                <div class="modal-body d-flex flex-column d-sm-flex justify-content-center justify-content-sm-center">
+                  <p>{{'Utilise cette cle pour envoyer tes sms depuis ton application'|trans}}</p>
+                    <input type="text" id="apikey" value="{{app.user.apikey}}" onclick="copyToClipboard('blockLink'); this.value='Copied!'" readonly>
+                <button type="button" class="btn-sm btn-primary" onclick="copyToClipboard('apikey'); this.value='Copied!'">{{'Copier'|trans}}</button>                    
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+  <!-- plugins:js -->
+  <script src="{{asset('user/vendors/js/vendor.bundle.base.js')}}"></script>
+  <!-- endinject -->
+  <!-- Plugin js for this page -->
+  <script src="{{asset('user/vendors/chart.js/Chart.min.js')}}"></script>
+  <script src="{{asset('user/vendors/datatables.net/jquery.dataTables.js')}}"></script>
+  <script src="{{asset('user/vendors/datatables.net-bs4/dataTables.bootstrap4.js')}}"></script>
+  <script src="{{asset('user/js/dataTables.select.min.js')}}"></script>
+
+  <!-- End plugin js for this page -->
+  <!-- inject:js -->
+  <script src="{{asset('user/js/off-canvas.js')}}"></script>
+  <script src="{{asset('user/js/hoverable-collapse.js')}}"></script>
+  <script src="{{asset('user/js/template.js')}}"></script>
+  <script src="{{asset('user/js/settings.js')}}"></script>
+  <script src="{{asset('user/js/todolist.js')}}"></script>
+  <!-- endinject -->
+  <!-- Custom js for this page-->
+  <script src="{{asset('user/js/dashboard.js')}}"></script>
+  <script src="{{asset('user/js/Chart.roundedBarCharts.js')}}"></script>
+  <!-- End custom js for this page-->
+  <script>
+    setTimeout(function(){
+        $('.alert').slideUp();
+    },10000);
+    function copyToClipboard(id) {
+      /* Get the text field */
+      var copyText = document.getElementById(id);
+      copyText.select();
+      copyText.setSelectionRange(0, 99999); /* For mobile devices */
+      navigator.clipboard.writeText(copyText.value);
+    
+    }
+  </script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2PRCCMBP3Z"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-2PRCCMBP3Z');
+  </script>
+  {% block script %}
+  
+  {% endblock %}
+</body>
+
+</html>
+

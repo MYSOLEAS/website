@@ -1,0 +1,73 @@
+{% extends 'user/layout.html.twig' %}
+
+{% block title %}
+    <title>{{'Mysoleas sms gateway pack'|trans}}!</title>
+    <meta content="list pack in mysoleas sms gateway" name="description">   
+{% endblock %}
+
+{% block content %}
+
+          
+<div class="row">
+  <div class="col-md-12 grid-margin">
+    <div class="row">
+      <div class="col-12 mb-4 mb-xl-0">
+        <h3 class="font-weight-bold">{{'Souscrit a un pack sms'}}</h3>
+        <h6 class="font-weight-normal mb-0">{{'Veuillez'|trans}} <span class="text-primary">{{'souscrire a un pack'|trans}}</span> {{'afin d\'avoir du credit sms'|trans}}</h6>
+      </div>
+    </div>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-12 grid-margin transparent">
+    <div class="row">
+      <div class="col-md-3 mb-4 stretch-card transparent">
+        <div class="card card-tale">
+          <div class="card-body">
+            <h3 class="mb-4 text-center">Starter</h3>
+            <p class="fs-30 mb-2">100 SMS</p>
+            <p>500 XAF</p>
+            <p>{{'Valable 7 jours'|trans}}</p>
+          </div>
+          <a role="button" href="{{path('mysoleas_buy_sms', {'pack':'starter'})}}" class="btn btn-success">{{'SOUSCRIRE'|trans}}</a>
+        </div>
+      </div>
+      <div class="col-md-3 mb-4 stretch-card transparent">
+        <div class="card card-dark-blue">
+          <div class="card-body">
+            <h3 class="mb-4 text-center">Regular</h3>
+            <p class="fs-30 mb-2">500 SMS</p>
+            <p>2000 XAF</p>
+            <p>{{'Valable 30 jours'|trans}}</p>
+          </div>
+          <a role="button" href="{{path('mysoleas_buy_sms', {'pack':'regular'})}}" class="btn btn-success">{{'SOUSCRIRE'|trans}}</a>
+        </div>
+      </div>
+      <div class="col-md-3 mb-4 stretch-card transparent">
+        <div class="card card-light-blue">
+          <div class="card-body">
+            <h3 class="mb-4 text-center">Professional</h3>
+            <p class="fs-30 mb-2">2000 SMS</p>
+            <p>5000 XAF</p>
+            <p>{{'Valable 30 jours'|trans}}</p>
+          </div>
+          <a role="button" href="{{path('mysoleas_buy_sms', {'pack':'professional'})}}" class="btn btn-success">{{'SOUSCRIRE'|trans}}</a>
+        </div>
+      </div>
+      <div class="col-md-3 mb-4 stretch-card transparent">
+        <div class="card card-light-danger">
+          <div class="card-body">
+            <h3 class="mb-4  text-center">Ultimate</h3>
+            <p class="fs-30 mb-2">5000 SMS</p>
+            <p>10000 XAF</p>
+            <p>{{'Valable 60 jours'|trans}}</p>
+          </div>
+          <a role="button" href="{{path('mysoleas_buy_sms', {'pack':'ultimate'})}}" class="btn btn-success">{{'SOUSCRIRE'|trans}}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

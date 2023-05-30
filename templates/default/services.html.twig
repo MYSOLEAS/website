@@ -1,0 +1,28 @@
+ <!--==========================
+      Services Section
+    ============================-->
+    <section id="services" class="section-bg">
+      <div class="container">
+
+        <header class="section-header">
+          <h3>{{'Services'|trans}}</h3>
+          <p>{{service.description|trans}}</p>
+        </header>
+
+        <div class="row">
+          {% for card in service.cards %}
+          {% if card.lang == app.request.locale %}
+          <div class="col-md-6 col-lg-4 wow bounceInUp" data-wow-duration="{{loop.index / service.cards|length }}s">
+            <div class="box">
+              <div class="icon" style="background: {{ random(['#ecebff', '#bfedc0', '#3189ed', '#6ceac0']) }};"><i class="{{card.icon}}" style="color: {{ random(['#533232', '#350278', '#404206', '#0d5e2d']) }};"></i></div>
+              <h4 class="title"><a href="">{{card.title}}</a></h4>
+              <p class="description">{{card.description|raw}}</p>
+            </div>
+          </div>
+          {% endif %}
+          {% endfor %}
+          
+        </div>
+
+      </div>
+    </section><!-- #services -->

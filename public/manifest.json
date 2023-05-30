@@ -1,0 +1,27 @@
+{
+  "short_name": "Mysoleas",
+  "name": "Mysoleas digital agency",
+  "icons": [
+    {
+      "src": "/img/manifest/1.jpg",
+      "type": "image/png",
+      "sizes": "48x48"
+    },
+    {
+        "src": "/img/manifest/2.jpg",
+        "type": "image/png",
+        "sizes": "192x192"
+    },
+    {
+        "src": "/img/manifest/3.jpg",
+        "type": "image/png",
+        "sizes": "512x512"
+    }
+  ],
+  "start_url": "/user/login",
+  "background_color": "#f5f7ff",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#41a1e2",
+  "description": "Let's be Smart Together with Mysoleas"
+}

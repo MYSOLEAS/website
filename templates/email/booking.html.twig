@@ -1,0 +1,44 @@
+{% extends 'email/layout.html.twig' %} 
+{% block title %}
+    {% if isConfirmed == true %}
+        <p style="margin: 0; font-size: 16px; text-align: center;"><span style="font-size:46px;color:#003188;"><strong>{{'Réservation Confirmee'|trans}}</strong></span></p>
+    {% else %}
+        <p style="margin: 0; font-size: 16px; text-align: center;"><span style="font-size:46px;color:#003188;"><strong>{{'Nouvelle Réservation'|trans}}</strong></span></p>
+    {% endif %}
+{% endblock %}
+{% block content %}
+    {% if isConfirmed == true %}
+        {% if isOwner == true %}
+            <p style="margin: 0; mso-line-height-alt: 24px;"><span style="font-size:16px;color:#6d89bc;">Vous avez Confirmee la Réservation No <strong>{{booking.id}}</strong> </span></p>
+            <p style="margin: 0; mso-line-height-alt: 18px;"> </p>
+            <p style="margin: 0; mso-line-height-alt: 24px;"><span style="font-size:16px;color:#6d89bc;">Les details sont les suivants :</span></p>
+            <p style="margin: 0; mso-line-height-alt: 24px;"><span style="font-size:16px;color:#6d89bc;">Date debut : </span> {{booking.start|date("d/m/Y")}}</p>
+            <p style="margin: 0; mso-line-height-alt: 24px;"><span style="font-size:16px;color:#6d89bc;">Date fin : </span> {{booking.end|date("d/m/Y")}}</p>
+        {% else %}
+            <p style="margin: 0; mso-line-height-alt: 24px;"><span style="font-size:16px;color:#6d89bc;">Votre Réservation No <strong>{{booking.id}}</strong> sur Immoleas a été confirmée</span></p>
+            <p style="margin: 0; mso-line-height-alt: 18px;"> </p>
+            <p style="margin: 0; mso-line-height-alt: 24px;"><span style="font-size:16px;color:#6d89bc;">Les détails sont les suivants :</span></p>
+            <p style="margin: 0; mso-line-height-alt: 24px;"><span style="font-size:16px;color:#6d89bc;">Date début : </span> {{booking.start|date("d/m/Y")}}</p>
+            <p style="margin: 0; mso-line-height-alt: 24px;"><span style="font-size:16px;color:#6d89bc;">Date fin : </span> {{booking.end|date("d/m/Y")}}</p>
+        {% endif %}
+    {% else %}
+        {% if isOwner == true %}    
+            <p style="margin: 0; mso-line-height-alt: 24px;"><span style="font-size:16px;color:#6d89bc;">Vous avez une nouvelle réservation en attente sur<strong>Immoleas</strong></span></p>
+            <p style="margin: 0; mso-line-height-alt: 18px;"> </p>
+            <p style="margin: 0; mso-line-height-alt: 24px;"><span style="font-size:16px;color:#6d89bc;">Les détails sont les suivants :</span></p>
+            <p style="margin: 0; mso-line-height-alt: 24px;"><span style="font-size:16px;color:#6d89bc;">Bien Réservé : </span>{% if booking.estate is defined and booking.estate is not null %}{% set ownerId = booking.estate.owner.id %}{{booking.estate.type}} {{booking.estate.name}}{% else %}{% set ownerId = booking.housing.building.owner.id %}{{booking.housing.type}} {{booking.housing.name}}{% endif %}</p>
+            <p style="margin: 0; mso-line-height-alt: 24px;"><span style="font-size:16px;color:#6d89bc;">Date debut : </span> {{booking.start|date("d/m/Y")}}</p>
+            <p style="margin: 0; mso-line-height-alt: 24px;"><span style="font-size:16px;color:#6d89bc;">Date fin : </span> {{booking.end|date("d/m/Y")}}</p>
+            <p style="margin: 0; mso-line-height-alt: 18px;"> </p>
+            <p class="text-center" style="margin: 0; mso-line-height-alt: 24px;"><span style="font-size:16px;color:#6d89bc;"><a href='https://immoleas.com/booking-confirm/{{booking.id}}/{{ownerId}}'><input class='btn btn-primary' type='button' value='Confirmer la reservation'/></a></span></p>
+        {% else %}
+            <p style="margin: 0; mso-line-height-alt: 24px;"><span style="font-size:16px;color:#6d89bc;">Votre réservation est en attente de confirmation </span></p>
+            <p style="margin: 0; mso-line-height-alt: 18px;"> </p>
+            <p style="margin: 0; mso-line-height-alt: 24px;"><span style="font-size:16px;color:#6d89bc;">Détails de la réservation :</span></p>
+            <p style="margin: 0; mso-line-height-alt: 24px;"><span style="font-size:16px;color:#6d89bc;">Bien Réservé : </span>{% if booking.estate is defined and booking.estate is not null %}{{booking.estate.type}} {{booking.estate.name}}{% else %}{{booking.housing.type}} {{booking.housing.name}}{% endif %}</p>
+            <p style="margin: 0; mso-line-height-alt: 24px;"><span style="font-size:16px;color:#6d89bc;">Date debut : </span> {{booking.start|date("d/m/Y")}}</p>
+            <p style="margin: 0; mso-line-height-alt: 24px;"><span style="font-size:16px;color:#6d89bc;">Date fin : </span> {{booking.end|date("d/m/Y")}}</p>
+            <p style="margin: 0; mso-line-height-alt: 18px;"> </p>
+        {% endif %}
+    {% endif %}
+{% endblock %}

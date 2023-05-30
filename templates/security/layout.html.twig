@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta content="mysoleas, login, send sms, sms gateway, soleas sms" name="keywords">
+    
+  {% block title %}
+  {% endblock %}
+  
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="{{asset('user/vendors/feather/feather.css')}}">
+  <link rel="stylesheet" href="{{asset('user/vendors/ti-icons/css/themify-icons.css')}}">
+  <link rel="stylesheet" href="{{asset('user/vendors/css/vendor.bundle.base.css')}}">
+  <!-- endinject -->
+  <!-- Plugin css for this page -->
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="{{asset('user/css/vertical-layout-light/style.css')}}">
+  <!-- endinject -->
+  <link href="{{asset('img/mysoleas.png')}}" rel="shortcut icon">
+  <link href="{{asset('img/mysoleas.png')}}" rel="apple-touch-icon">
+</head>
+
+<body>
+  <div class="container-scroller">
+    <div class="container-fluid page-body-wrapper full-page-wrapper">
+      <div class="content-wrapper d-flex align-items-center auth px-0">
+        <div class="row w-100 mx-0">
+          <div class="col-lg-4 mx-auto">
+            <div class="auth-form-light text-left py-5 px-4 px-sm-5">
+              {% block content %}
+              
+              {% endblock %}
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- content-wrapper ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+  <!-- plugins:js -->
+  <script src="{{asset('user/vendors/js/vendor.bundle.base.js')}}"></script>
+  <!-- endinject -->
+  <!-- Plugin js for this page -->
+  <!-- End plugin js for this page -->
+  <!-- inject:js -->
+  <script src="{{asset('user/js/off-canvas.js')}}"></script>
+  <script src="{{asset('user/js/hoverable-collapse.js')}}"></script>
+  <script src="{{asset('user/js/template.js')}}"></script>
+  <script>
+    setTimeout(function(){
+      $('.alert').slideUp();
+  },10000);
+  </script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2PRCCMBP3Z"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-2PRCCMBP3Z');
+  </script>
+  <!-- endinject -->
+</body>
+
+</html>

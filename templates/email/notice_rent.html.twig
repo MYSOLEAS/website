@@ -1,0 +1,22 @@
+{% extends 'email/layout.html.twig' %} 
+{% block title %}
+    {% if duration < 0 true %}
+        <p style="margin: 0; font-size: 16px; text-align: center;"><span style="font-size:46px;color:#003188;"><strong>{{'Paiement en attente'|trans}}</strong></span></p>
+    {% else %}
+        <p style="margin: 0; font-size: 16px; text-align: center;"><span style="font-size:46px;color:#003188;"><strong>{{'Echeance Proche'|trans}}</strong></span></p>
+    {% endif %}
+        {% endblock %}
+{% block content %}
+    {% if duration < 0 true %}
+        <p style="margin: 0; mso-line-height-alt: 24px;"><span style="font-size:16px;color:#6d89bc;">Chers {{estate.tenant.fullname}}, Vous avez un retard de paiement pour le compte de :</span></p>
+        <p style="margin: 0; mso-line-height-alt: 18px;"> </p>
+        <p style="margin: 0; mso-line-height-alt: 24px;"><span style="font-size:16px;color:#6d89bc;">Bien en location : </span>{{estate.type}} {{estate.name}}</p>
+        <p style="margin: 0; mso-line-height-alt: 24px;"><span style="font-size:16px;color:#6d89bc;">Date de paiement   : </span> {{estate.nextDue|date('d/m/Y')}}</p><p style="margin: 0; mso-line-height-alt: 18px;"> </p>
+    {% else %}
+        <p style="margin: 0; mso-line-height-alt: 24px;"><span style="font-size:16px;color:#6d89bc;">Chers {{estate.tenant.fullname}}, Votre echeance de paiement est proche pour le compte de :</span></p>
+        <p style="margin: 0; mso-line-height-alt: 18px;"> </p>
+        <p style="margin: 0; mso-line-height-alt: 24px;"><span style="font-size:16px;color:#6d89bc;">Bien en location : </span>{{estate.type}} {{estate.name}}</p>
+        <p style="margin: 0; mso-line-height-alt: 24px;"><span style="font-size:16px;color:#6d89bc;">Date de Paiement : </span> {{estate.nextDue|date('d/m/Y')}}</p><p style="margin: 0; mso-line-height-alt: 18px;"> </p>
+        <p style="margin: 0; mso-line-height-alt: 18px;"> </p>
+    {% endif %}
+{% endblock %}

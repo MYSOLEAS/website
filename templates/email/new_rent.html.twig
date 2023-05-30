@@ -1,0 +1,24 @@
+{% extends 'email/layout.html.twig' %} 
+{% block title %}
+    <p style="margin: 0; font-size: 16px; text-align: center;"><span style="font-size:46px;color:#003188;"><strong>{{'Nouveau Contrat de location'|trans}}</strong></span></p>
+    {% endblock %}
+{% block content %}
+    {% if isOwner == true %}
+        <p style="margin: 0; mso-line-height-alt: 24px;"><span style="font-size:16px;color:#6d89bc;">Chers {{user.profile.fullname}}, Vous avez un nouveau contrat de location suivie par <strong>Immoleas</strong></span></p>
+        <p style="margin: 0; mso-line-height-alt: 18px;"> </p>
+        <p style="margin: 0; mso-line-height-alt: 24px;"><span style="font-size:16px;color:#6d89bc;">Vous pouvez le manager en temps reel. <br> Les details sont les suivants :</span></p>
+        <p style="margin: 0; mso-line-height-alt: 24px;"><span style="font-size:16px;color:#6d89bc;">Locataire : </span> {{estate.tenant.fullname}} {{estate.tenant.lastname}}</p>
+        <p style="margin: 0; mso-line-height-alt: 24px;"><span style="font-size:16px;color:#6d89bc;">Contact : </span> {{estate.tenant.user.contact}}</p>
+        <p style="margin: 0; mso-line-height-alt: 24px;"><span style="font-size:16px;color:#6d89bc;">Bien en location : </span>{{estate.type}} {{estate.name}}</p>
+        <p style="margin: 0; mso-line-height-alt: 24px;"><span style="font-size:16px;color:#6d89bc;">Montant location  : </span> {{estate.amount}} XAF</p>
+        <p style="margin: 0; mso-line-height-alt: 24px;"><span style="font-size:16px;color:#6d89bc;">Prochaine Paiement le   : </span> {{estate.nextDue|date('d/m/Y')}}</p><p style="margin: 0; mso-line-height-alt: 18px;"> </p>
+    {% else %}
+        <p style="margin: 0; mso-line-height-alt: 24px;"><span style="font-size:16px;color:#6d89bc;">Chers {{user.profile.fullname}}, Vous avez un nouveau contrat de location suivie par <strong>Immoleas</strong></span></p>
+        <p style="margin: 0; mso-line-height-alt: 18px;"> </p>
+        <p style="margin: 0; mso-line-height-alt: 24px;"><span style="font-size:16px;color:#6d89bc;">Vous pouvez le manager en temps reel. <br> Les details sont les suivants :</span></p>
+        <p style="margin: 0; mso-line-height-alt: 24px;"><span style="font-size:16px;color:#6d89bc;">Bien en location : </span>{{estate.type}} {{estate.name}}</p>
+        <p style="margin: 0; mso-line-height-alt: 24px;"><span style="font-size:16px;color:#6d89bc;">Montant location  : </span> {{estate.amount}} XAF</p>
+        <p style="margin: 0; mso-line-height-alt: 24px;"><span style="font-size:16px;color:#6d89bc;">Prochaine Paiement le   : </span> {{estate.nextDue|date('d/m/Y')}}</p><p style="margin: 0; mso-line-height-alt: 18px;"> </p>
+        <p style="margin: 0; mso-line-height-alt: 18px;"> </p>
+    {% endif %}
+{% endblock %}

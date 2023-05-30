@@ -1,0 +1,175 @@
+# config/packages/easy_admin.yaml
+easy_admin:
+    site_name: 'MySoleas'
+    user:
+        display_name: true
+        display_avatar: true
+    design:
+        menu:
+          - { entity: User, label: 'User', icon: 'user'}
+          - { label: 'Card Container', children: [
+            {entity: CardSection, label: 'Card Container', icon: 'tag'},
+            { entity: Card, label: 'Card', icon: 'tag'}
+          ] }
+          - { entity: Section, label: 'Section Element'}
+          - { label: 'Portfolio', children: [
+            { entity: Portfolio, label: 'Portfolio', icon: 'tag'}
+            { entity: PortfolioCategory, label: 'Portfolio Category', icon: 'tag'}
+          ]}
+          - { entity: Team, label: 'Team Section'}
+          - { entity: Testimonial, label: 'Testimonial Section'}
+          - { entity: Client, label: 'Client Section'}
+          - { entity: Setting, label: 'Settings'}
+    entities:
+        CardSection:
+            class: App\Entity\CardSection
+            list:
+                title: 'Card Container'
+                fields:
+                    - id
+                    - title
+                    - cards
+            form:
+                title: 'Add Card Container'
+                form_options: { validation_groups: ['Default'] }
+            new:
+                form_options: { validation_groups: ['Default', 'CardSection'] }
+            edit:
+                title:  'Edit Card Container'
+        Card:
+            class: App\Entity\Card
+            list:
+                title: 'Card'
+                fields:
+                  - title
+            form:
+                title: 'Add Card'
+                form_options: { validation_groups: ['Default'] }
+            new:
+                form_options: { validation_groups: ['Default', 'Card'] }
+            edit:
+                title:  'Edit Card'
+        Section:
+          class: App\Entity\Section
+          list:
+            title: 'Section Element'
+            fields:
+              - id
+              - title
+          form:
+              title: 'Add Section'
+              fields:
+                - title
+                - {property: 'description', type: 'code_editor'}
+                - {property: 'image', type: 'file_upload', type_options: { upload_dir: 'public/uploads/images/', required: false }}
+                - isProduct
+                - hidden
+          new:
+              form_options: { validation_groups: ['Default', 'Section'] }
+          edit:
+              title:  'Edit Section'
+        PortfolioCategory:
+          class: App\Entity\PortfolioCategory
+          list:
+            title: 'Portfolio Category'
+            fields:
+              - id 
+              - name
+          form:
+              title: 'Add Portfolio Category'
+              form_options: { validation_groups: ['Default'] }
+          new:
+              form_options: { validation_groups: ['Default', 'PortfolioCategory'] }
+          edit:
+              title:  'Edit Portfolio Category'
+        User:
+          class: App\Entity\User
+          list:
+            title: User
+            fields:
+              - id
+              - username
+          form:
+              title: 'Add User'
+              form_options: { validation_groups: ['Default'] }
+          new:
+              form_options: { validation_groups: ['Default', 'User'] }
+          edit:
+              title:  'Edit User'
+        Portfolio:
+          class: App\Entity\Portfolio
+          list:
+            title: 'Portfolio items'
+            fields:
+              - id
+              - title
+          form:
+              title: 'Add Portfolio item'
+              fields:
+                - title
+                - { property: 'description', type: 'text_editor'}
+                - {property: 'image', type: 'file_upload', type_options: { upload_dir: 'public/uploads/images/' }}
+                - category
+                - hidden
+          new:
+              form_options: { validation_groups: ['Default', 'Portfolio'] }
+          edit:
+              title:  'Edit Portfolio'
+        Team:
+          class: App\Entity\Team
+          list:
+            title: 'Team Section'
+            fields:
+              - id
+              - title
+          form:
+              title: 'Add Team Member'
+              fields:
+                - title
+                - name
+                - {property: 'avatar', type: 'file_upload', type_options: { upload_dir: 'public/uploads/images/' }}
+                - { property: 'socialNetworks', type: 'collection'}
+          new:
+              form_options: { validation_groups: ['Default', 'Team'] }
+          edit:
+              title:  'Edit Team Member'
+        Testimonial:
+          class: App\Entity\Testimonial
+          list:
+            title: 'Testimonial Section'
+          form:
+              title: 'Add Testimonial item'
+              fields:
+                - username
+                - usertitle
+                - {property: avatar, type: 'file_upload', type_options: { upload_dir: 'public/uploads/images/' }}
+                - content
+          new:
+              form_options: { validation_groups: ['Default', 'Testimonial'] }
+          edit:
+              title:  'Edit Testimonial'
+        Client:
+          class: App\Entity\Client
+          list:
+            title: 'Client Section'
+          form:
+              title: 'Add Client item'
+              fields:
+                - alt
+                - {property: 'image', type: 'file_upload', type_options: { upload_dir: 'public/uploads/images/' }}
+          new:
+              form_options: { validation_groups: ['Default', 'Client'] }
+          edit:
+              title:  'Edit Client item'
+        Setting:
+          class: App\Entity\Setting
+          list:
+            title: 'Setting'
+          form:
+              title: 'Add Setting'
+              form_options: { validation_groups: ['Default'] }
+          new:
+              form_options: { validation_groups: ['Default', 'Setting'] }
+          edit:
+              title:  'Edit Setting'
+            

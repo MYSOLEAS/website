@@ -1,0 +1,81 @@
+{% extends 'user/layout.html.twig' %}
+{% block title %}
+    <title>{{'Buy sms Pack'|trans}}!</title>
+    <meta content="buy sms pack to increase your balance" name="description">   
+{% endblock %}
+
+{% block content %}
+
+          
+<div class="row">
+  <div class="col-md-12 grid-margin">
+    <div class="row">
+      <div class="col-12 mb-4 mb-xl-0">
+        <h3 class="font-weight-bold text-center">{{'Confirmation souscription pack sms'|trans}}</h3>
+      </div>
+    </div>
+  </div>
+</div>
+<hr>
+<div class="row justify-content-center">
+  <div class="col-md-6 grid-margin transparent text-center">
+      <div class="mb-4 stretch-card transparent">
+        <div class="card card-light-danger">
+          <div class="card-body">
+            <h3 class="mb-4 text-center">{{'Pack'|trans}} : {{pack}}</h3>
+            <p class="fs-30 mb-2">{{'donne droit à'|trans}} {{quantity}} SMS</p>
+            <p>{{'Montant'|trans}} {{amount}} XAF</p>
+            <p>{{'Valable'|trans}} {{validity}} {{'jours'|trans}}</p>
+          </div>
+          <div class="sopayButton"></div>
+        </div>
+      </div>
+  </div>
+</div>
+
+{% endblock %}
+{% block script %}
+<script id="SBScript" type="text/javascript" data-lang="fr" data-apikey="x9eXA1cVreefQX3xQnjzhJYWduDh-hMk0o4ba6veCPw" src="https://soleaspay.com/webPay/v2/sopayButton.min.js" ></script>
+<script>
+  $(document).ready(function(){
+    let description = '{{"Souscription au pack sms"|trans}} {{pack}}'
+    const options  = {
+      amount: '{{amount}}',//'{#% if payAmount is defined  %}{{payAmount}}{% else %}0{% endif %#}' Amount to pay by the user for billing mode
+      successUrl: 'https://mysoleas.com/receivePay', //Url where redirected after process finish. only for perfect money
+      currency: 'XAF', // Currency use in your website 
+      description , // Payment description
+      btnTitle: '{{"Payer Maintenant"|trans}}',
+      businessName: 'Mysoleas SMS'
+      }
+      function initButton(){
+        return SopayButton.billing(options)
+      .then((res)=>buy(res, pack))
+      .catch((err)=>console.log(err))
+      .finally(initButton)
+      }
+      initButton()
+      
+      function buy(data, pack){
+        console.log(data)
+        if(data.success){
+          $.ajax({
+            url: '{{path("mysoleas_buy_sms", {pack:pack})}}',
+            type: "POST",
+            dataType: "json",
+            data: { amount: data.data.amount,
+                    ref: data.data.ref,
+                    description},
+            success:function(data)
+             {
+              if(data.success){
+                console.log('good')
+                //let link = "{{path('mysoleas_dashboard')}}"
+                window.location.href = "{{path('mysoleas_dashboard')}}"
+              }
+             }
+          })
+        }
+      }
+  })
+</script>
+{% endblock %}

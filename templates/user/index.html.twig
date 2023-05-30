@@ -1,0 +1,253 @@
+{% extends 'user/layout.html.twig' %}
+
+{% block content %}
+
+          
+<div class="row">
+  <div class="col-md-12 grid-margin">
+    <div class="row">
+      <div class="col-12 col-xl-8 mb-4 mb-xl-0">
+        <h3 class="font-weight-bold">{{'Bienvenu'|trans}} {{app.user.username}}</h3>
+        <h6 class="font-weight-normal mb-0">Vous avez <span class="text-primary">1 notfications non lu!</span></h6>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6 grid-margin stretch-card">
+    <div class="card tale-bg">
+      <div class="card-people mt-auto">
+        <img src="{{asset('user/images/mysoleas.png')}}" alt="people">
+        
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 grid-margin transparent">
+    <div class="row">
+      <div class="col-md-6 mb-4 stretch-card transparent">
+        <div class="card card-tale">
+          <div class="card-body">
+            <p class="mb-4">Pack SMS</p>
+            <p class="fs-30 mb-2">{% if pack is defined %}{{pack}}{% else %}{{'Essaie Gratuit'|trans}}{% endif %}</p>
+            <p>{{'valide jusqu\'a'|trans}} : {{app.user.smsDeadline|date("d/m/Y")}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 mb-4 stretch-card transparent">
+        <div class="card card-dark-blue">
+          <div class="card-body">
+            <p class="mb-4">{{'sms restant'|trans}}</p>
+            <p class="fs-30 mb-2">{{app.user.smsCredit}}</p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 mb-4 mb-lg-0 stretch-card transparent">
+        <div class="card card-light-blue">
+          <div class="card-body">
+            <p class="mb-4">Metric</p>
+            <p class="fs-30 mb-2">{{'pourcentage reussite'|trans}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 stretch-card transparent">
+        <div class="card card-light-danger">
+          <div class="card-body">
+            <p class="mb-4">{{'Valeur en XAF'|trans}}</p>
+            <p class="fs-30 mb-2">XAF {{ app.user.smsCredit * 1}}</p>
+            <p>{{'Minimum'|trans}} 500 XAF</p>
+          </div>
+          <button class="btn btn-primary">{{'Revendre sms inutilisés'|trans}}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+
+  <div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+       <div class="d-flex justify-content-between">
+        <p class="card-title">{{'Rapport Sms'|trans}}</p>
+        <a href="#" class="text-info">View all</a>
+       </div>
+        <p class="font-weight-500">{{'Rapport sms envoye par mois'|trans}}</p>
+        <div id="sales-legend" class="chartjs-legend mt-4 mb-2"></div>
+        <canvas id="sales-chart"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="row">
+  <div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <p class="card-title">{{'Derniers sms envoyés'|trans}}</p>
+        <div class="row">
+          <div class="col-12">
+            <div class="table-responsive">
+              <table id="example" class="display expandable-table" style="width:100%">
+                <thead>
+                  <tr>
+                    <th>Item</th>
+                    <th>{{'Phone'|trans}}</th>
+                    <th>{{'message'|trans}}</th>
+                    <th>{{'created At'|trans}}</th>
+                    <th>{{'Send At'|trans}}</th>
+                    <th>{{'Status'|trans}}</th>
+                    <th>{{'Actions'|trans}}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for sms in listSms %}
+                    <tr>
+                      <td>{{loop.index}}</td>
+                      <td>{{sms.phone}}</td>
+                      <td>{{sms.message|slice(0,15)}} ...</td>
+                      <td>{{sms.createdAt|date("d/m/Y H:i")}}</td>
+                      <td>{% if sms.sendAt is not null %}{{sms.sendAt|date("d/m/Y H:i")}}{% else %} - {% endif %}</td>
+                      <td>{{sms.status}}</td>
+                      <td>{{'detail'|trans}}</td>
+                    </tr>
+                  {% else %}
+                    <tr><td colspan="7">{{'Aucun sms pour l\'instant'|trans}}</td> </tr>
+                  {% endfor %}
+                </tbody>
+            </table>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+      <div class="card">
+        <div class="card-body">
+          <p class="card-title">{{'Historique'|trans}}</p>
+          <div class="row">
+            <div class="col-12">
+              <div class="table-responsive">
+                <table id="example" class="display expandable-table" style="width:100%">
+                  <thead>
+                    <tr>
+                      <th>Item</th>
+                      <th>{{'detail'|trans}}</th>
+                      <th>{{'montant'|trans}}</th>
+                      <th>{{'date'|trans}}</th>
+                      <th>{{'Status'|trans}}</th>
+                      <th>{{'Actions'|trans}}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for history in histories %}
+                      <tr>
+                        <td>{{loop.index}}</td>
+                        <td>{{history.label}}</td>
+                        <td>{{history.amount}} XAF</td>
+                        <td>{{history.date|date("d/m/Y H:i")}}</td>
+                        <td>{{history.status}}</td>
+                        <td>{{'detail'|trans}}</td>
+                      </tr>
+                    {% else %}
+                      <tr><td colspan="6">{{'Aucune transaction pour l\'instant'|trans}}</td> </tr>
+                    {% endfor %}
+                  </tbody>
+              </table>
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+{% endblock %}
+{% block script %}
+<script>
+if ($("#sales-chart").length) {
+  var SalesChartCanvas = $("#sales-chart").get(0).getContext("2d");
+  var SalesChart = new Chart(SalesChartCanvas, {
+    type: 'bar',
+    data: {
+      labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aut", "Sept", "Oct", "Nov", "Dec"],
+      datasets: [{
+          label: 'Not send Sms',
+          data: [480, 230, 470, 210, 330,0, 0 ,0, 0, 0, 0],
+          backgroundColor: '#98BDFF'
+        },
+        {
+          label: 'Sending SMS',
+          data: [400, 340, 550, 480, 170,0, 0 ,0, 0, 0, 10],
+          backgroundColor: '#4B49AC'
+        }
+      ]
+    },
+    options: {
+      cornerRadius: 5,
+      responsive: true,
+      maintainAspectRatio: true,
+      layout: {
+        padding: {
+          left: 0,
+          right: 0,
+          top: 20,
+          bottom: 0
+        }
+      },
+      scales: {
+        yAxes: [{
+          display: true,
+          gridLines: {
+            display: true,
+            drawBorder: false,
+            color: "#F2F2F2"
+          },
+          ticks: {
+            display: true,
+            min: 0,
+            max: 560,
+            callback: function(value, index, values) {
+              return  value + 'SMS' ;
+            },
+            autoSkip: true,
+            maxTicksLimit: 10,
+            fontColor:"#6C7383"
+          }
+        }],
+        xAxes: [{
+          stacked: false,
+          ticks: {
+            beginAtZero: true,
+            fontColor: "#6C7383"
+          },
+          gridLines: {
+            color: "rgba(0, 0, 0, 0)",
+            display: false
+          },
+          barPercentage: 1
+        }]
+      },
+      legend: {
+        display: false
+      },
+      elements: {
+        point: {
+          radius: 0
+        }
+      }
+    },
+  });
+  document.getElementById('sales-legend').innerHTML = SalesChart.generateLegend();
+}
+</script>
+{% endblock %}

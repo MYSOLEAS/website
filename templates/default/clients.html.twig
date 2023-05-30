@@ -1,0 +1,18 @@
+ <!--==========================
+      Clients Section
+    ============================-->
+    <section id="clients" class="wow fadeInUp">
+      <div class="container">
+
+        <header class="section-header">
+          <h3>Our Clients</h3>
+        </header>
+
+        <div class="clients-carousel">
+        {% for client in clients %}
+          <img src="{{asset(client.image|split('public/')[1])}}" style="height:100px;" alt="{{client.alt}}" class="img-fluid">
+        {% endfor %}
+        </div>
+
+      </div>
+    </section><!-- #clients -->

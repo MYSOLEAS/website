@@ -1,0 +1,39 @@
+{% extends 'security/layout.html.twig' %}
+
+{% block title %}
+  <title>{{'Activer son compte mysoleas'|trans}}!</title>
+      <meta name="description" content="{{'Activer son compte mysoleas pour gerer vos biens immobiliers'|trans}}">
+{% endblock %}
+
+{% block content %}
+<div class="brand-logo text-center">
+    <a href="{{path('mysoleas_home')}}"><img src="{{asset('img/logo.png')}}" alt="logo mysoleas"></a>
+  </div>
+  
+    {% for label, messages in app.flashes %}
+      {% for message in messages %}
+          <div class="alert alert-{{ label }} text-center" >{{ message|trans }}</div>  
+        {% endfor %}
+      {% endfor %}
+  <h4>{{'Renvoyer le mail d\'activation'|trans}}</h4>
+  <h6 class="font-weight-light">{{'Entrez votre email'|trans}}!</h6>
+  <form class="pt-3" method="post">
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-prepend bg-transparent">
+              <span class="input-group-text bg-transparent border-right-0">
+                <i class="icon-mail"></i>
+              </span>
+            </div>
+        <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" name="email" placeholder="Email" autocomplete="email" required autofocus>
+        </div>
+    </div>
+
+    <div class="mt-3">
+      <button class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" type="submit">{{'M\'envoyer le mail d\'activation'|trans}}</button>
+    </div>   
+    <div class="text-center mt-4 font-weight-light">
+      {{'Mon Compte est Actif'|trans}} <a href="{{path('mysoleas_login')}}" class="text-primary">{{'Me Connecter'|trans}}</a>
+    </div>
+  </form>
+{% endblock %}

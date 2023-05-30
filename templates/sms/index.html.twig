@@ -1,0 +1,204 @@
+{% extends 'user/layout.html.twig' %}
+
+{% block title %}
+    <title>{{'Mysoleas sms gateway manager'|trans}}!</title>
+    <meta content="send sms in a few steps and retain your customers" name="description">   
+    <style>
+        #countdown {
+            text-align: center;
+            margin:  20px 0px 69px;
+            min-height: 104px;
+        }
+        #countdown > div {
+            width: 100px;
+            height: 100px;
+            margin: 0px 1%;
+            display: inline-block;
+            font-size: 20px;
+            line-height: 52px;
+            position: relative;
+            font-weight: 700;
+            color: rgb(57, 96, 155);
+            border: 2px solid #fff;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        #countdown > div > span
+        {
+            display: block;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+
+<div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+    <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+        <a class="navbar-brand brand-logo mr-5" href="{{path('mysoleas_home')}}"><img src="{{asset('user/images/mysoleas.png')}}" class="mr-2" alt="logo mysoleas"/></a>
+        <a class="navbar-brand brand-logo-mini" href="{{path('mysoleas_home')}}"><img src="{{asset('user/images/mysoleas.png')}}" alt="logo mysoleas"/></a>
+      </div>
+      <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+        
+        
+        <ul class="navbar-nav navbar-nav-right">
+          <li class="nav-item nav-profile dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
+              <img src="{{asset('user/images/userDefault.png')}}" alt="profile"/>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
+              <a class="dropdown-item" href="{{path('mysoleas_login')}}">
+                <i class="ti-user text-primary"></i>
+                {{'Se Connecter'|trans}}
+              </a>
+              <a class="dropdown-item" href="{{path('mysoleas_register')}}">
+                <i class="ti-power-off text-primary"></i>
+                {{'S\'inscrire'|trans}}
+              </a>
+            </div>
+          </li>
+          <li class="nav-item nav-settings d-none d-lg-flex">
+            <a class="nav-link" href="#">
+              <i class="icon-ellipsis"></i>
+            </a>
+          </li>
+        </ul>
+        
+      </div>
+    </nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper justify-content-center">
+      <!-- partial:partials/_settings-panel.html -->
+      
+      <!-- partial -->
+      <div class="main-panel">
+        <div class="content-wrapper">
+          {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert alert-{{ label }} text-center" >{{ message|trans }}</div>  
+            {% endfor %}
+          {% endfor %}
+            <div class="row">
+                <div class="col-md-12 grid-margin">
+                    <h2 class="text-center">{{'WELCOME TO MYSOLEAS SMS MANAGER'|trans}}</h2>
+                </div>
+                <div class="col-md-6 grid-margin stretch-card">
+                    <div class="card">
+                      <div class="card-people mt-auto">
+                        <img src="{{asset('user/images/sms2.png')}}" alt="people">
+                        
+                      </div>
+                    </div>
+                  </div>
+                <div class="col-md-6 grid-margin mt-auto mb-auto">
+                    
+                    <p style="font-size: 1.1em;">{{'Send sms from your e-commerce site or applications from our sms gateway in just a few clicks'|trans}}. </p>
+                    <h3>{{'Our Strengths'|trans}}</h3>
+                    <ul style="font-size: 1.1em;">
+                        <li>{{'Low cost : send sms from 1XAF per sms'|trans}}.</li>
+                        <li>{{'Availability: our sms gateway is available 24 hours a day'|trans}}.</li>
+                        <li>{{'Speed: Your text message is delivered within a maximum of 5 minutes after it has been sent'|trans}}.</li>
+                        <li>{{'Monitoring: keep an eye on your sms while having the status of each one'|trans}}.</li>
+                        <li>{{'Security: The sms sent from our gateway are secure and visible to you only'|trans}}.</li>
+                        <li>{{'Sms length : send sms up to 160 characters for more flexibility'|trans}}</li>
+                    </ul>
+            
+                    <div class="text-center"><a role="button" class="btn btn-primary" href="{{path('mysoleas_login')}}">{{'Get Started'|trans}}</a></div>
+                
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 grid-margin text-center">
+                  <h3>{{'Send free sms'|trans}} (1/15 min)</h3>
+                  <h3 class="subs-title">{{'Next sms available in'|trans}} :</h3>
+                </div>
+                
+                <div class="col-12 grid-margin text-center" id="countdown" data-wow-delay=".3s"></div>
+                
+                <div class="col-md-6 grid-margin text-center ml-auto mr-auto">
+                    <form class="forms-sample" method="post" action="{{path('mysoleas_add_sms')}}">
+                        <div class="form-group">
+                          <label for="exampleInputName1">{{'Telephone'|trans}}</label>
+                          <input type="text" class="form-control" id="exampleInputName1" placeholder="6xxxxxxxxx" name="contact" maxlength="9" required>
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleTextarea1">{{'Message'|trans}}</label>
+                          <textarea class="form-control" id="exampleTextarea1" maxlength="160" rows="4" name="message" required></textarea>
+                          <input type="hidden" name="key" value="request an apikey" readonly>
+                          <input type="hidden" name="source" value="free" readonly>
+                        </div>
+                                  
+                        <button type="submit" class="btn btn-primary mr-2" readonly disabled>{{'Envoyer'|trans}}</button>
+                        <button type="reset" class="btn btn-light">{{'Cancel'|trans}}</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:partials/_footer.html -->
+        <footer class="footer">
+          <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © <strong>MySoleas</strong> 2021. All rights reserved.</span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="ti-heart text-danger ml-1"></i></span>
+          </div>
+        </footer>
+        <!-- partial -->
+      </div>
+      <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+
+{% endblock %}
+{% block script %}
+<script src="{{asset('user/js/jquery.countdown.min.js')}}"></script>
+<script src="{{asset('user/js/wow.js')}}"></script>
+<script>
+    function getCookie(cname) {
+        let name = cname + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(';');
+        for(let i = 0; i <ca.length; i++) {
+          let c = ca[i];
+          while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+          }
+          if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+          }
+        }
+        return "";
+    }
+    
+    function updateCard(){
+        if(getCookie('leutch_cart0')){}
+    }
+    $('#countdown').attr('data-date', 'Sept 01, 2022 06:00:00')
+    // Init Wow
+    wow = new WOW( {
+        animateClass: 'animated',
+        offset:       100
+    });
+    wow.init();
+    // Countdown
+    if ($('#countdown').length) { 
+        $('#countdown').countdown({
+            render: function(data) {
+                if (data.years >= 1) {
+                    var $days = (data.years*365)+data.days;
+                } else {
+                    var $days = data.days;
+                }
+                $(this.el).html(
+                    '<div class="day">' + this.leadingZeros($days) + ' <span>Days</span></div>'+
+                    '<div class="hour">' + this.leadingZeros(data.hours, 2) + ' <span>Hours</span></div>'+
+                    '<div class="min">' + this.leadingZeros(data.min, 2) + ' <span>Minutes</span></div>'+
+                    '<div class="sec">' + this.leadingZeros(data.sec, 2) + ' <span>Seconds</span></div>'
+                );
+            }
+        });
+    }
+</script>
+{% endblock %}

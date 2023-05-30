@@ -1,0 +1,41 @@
+<!--==========================
+      Features Section
+    ============================-->
+    <section id="features">
+      <div class="container">
+        {% set smsPath = path('mysoleas_sms') %}
+        {% for feature in features %}
+
+        {% if loop.index % 2 %}
+        <div class="row feature-item">
+          <div class="col-lg-6 wow fadeInUp">
+            <img src="{{asset(feature.image|split('public/')[1])}}" class="img-fluid" alt="{{feature.title|trans}}">
+          </div>
+          <div class="col-lg-6 wow fadeInUp pt-5 pt-lg-0">
+            <h4>{{feature.title|trans}}</h4>
+            <p>
+              {{feature.description|replace({'toLink' : smsPath})|raw }}
+            </p>
+          </div>
+        </div>
+        {% else %}
+            <div class="row feature-item mt-5 pt-5">
+          <div class="col-lg-6 wow fadeInUp order-1 order-lg-2">
+            <img src="{{asset(feature.image|split('public/')[1])}}" class="img-fluid" alt="{{feature.title|trans}}">
+          </div>
+
+          <div class="col-lg-6 wow fadeInUp pt-4 pt-lg-0 order-2 order-lg-1">
+            <h4>{{feature.title|trans}}</h4>
+            <p>
+             {{feature.description|replace({'toLink' : smsPath})|raw}}
+            </p>
+            
+          </div>
+          
+        </div>
+        {% endif %}
+        {% endfor %}
+        
+
+      </div>
+    </section><!-- #about -->

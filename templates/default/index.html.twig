@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MySoleas | digital agency | financial service{% endblock %}
+
+{% block body %}
+
+{% include('default/header.html.twig') %}
+ 
+ {% include('default/intro.html.twig') %}
+
+  <main id="main">
+      
+      {% include('default/caroussel.html.twig') %}
+
+   {% include('default/section.html.twig') %}
+   
+   {% include('default/features.html.twig') %}
+
+   {% include('default/services.html.twig') %}
+
+    {% include('default/portfolio.html.twig') %}
+
+    {% include('default/testimonials.html.twig') %}
+
+   {% include('default/team.html.twig') %}
+
+    
+  {% include('default/clients.html.twig') %}
+
+    
+   
+  </main>
+
+  {% include('default/footer.html.twig') %}
+  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+  <!-- Uncomment below i you want to use a preloader -->
+{% endblock %}

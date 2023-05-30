@@ -1,0 +1,90 @@
+security:
+    encoders:
+        App\Entity\User:
+            algorithm: auto
+
+
+    providers:
+        # used to reload user from session & other features (e.g. switch_user)
+        app_user_provider:
+            entity:
+                class: App\Entity\User
+                property: email
+        
+    role_hierarchy:
+        ROLE_USER:      ROLE_USER
+        ROLE_ADMIN:       [ROLE_USER]
+        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+        
+
+    firewalls:
+        
+#        dev:
+#            pattern: ^/(_(profiler|wdt)|css|images|js)/
+#            security: false
+#        secured_area:
+            #anonymous: ~
+#            pattern:    ^/quick
+            #provider:     app_user_provider
+            
+        main:
+            pattern:      ^/
+            anonymous:    lazy
+            provider:     app_user_provider
+            form_login:
+                login_path: mysoleas_login
+                check_path: mysoleas_login
+                use_referer: true
+                default_target_path: mysoleas_dashboard
+            logout:
+                path:       mysoleas_logout
+                target:     /
+            remember_me:
+                secret:   '%kernel.secret%'
+                lifetime: 604800
+                path:       mysoleas_dashboard
+            user_checker: App\Security\UserChecker
+            entry_point: App\Security\MysoleasAuthenticator
+            #custom_authenticator: App\Security\MysoleasAuthenticator
+            
+            #oauth:
+            #    resource_owners:
+            #        google:        /login/check-google
+            #    login_path:        xpiment_login
+            #    use_forward:       false
+            #    failure_path:      xpiment_login
+                #check_path:        /quick/login_check
+            #    default_target_path: xpiment_user_redirect
+            #    oauth_user_provider:
+            #        service: my.oauth_local_user_provider
+                    #service: my.oauth_aware.user_provider.service
+                    #service: my_user.oauth_provider
+
+                #secret:     '%secret%' # %secret% est un paramètre de parameter
+#            anonymous: lazy
+
+        
+            # activate different ways to authenticate
+            # https://symfony.com/doc/current/security.html#firewalls-authentication
+
+            # https://symfony.com/doc/current/security/impersonating_user.html
+            # switch_user: true
+
+    # Easy way to control access for large sections of your site
+    # Note: Only the *first* access control that matches will be used
+    access_control:
+        - { path: ^/admin, roles: ROLE_ADMIN }
+        #- { path: ^/user/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        #- { path: ^/user/login/fr, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        #- { path: ^/user/login/en, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        #- { path: ^/user/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        #- { path: ^/user/register/fr, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        #- { path: ^/user/register/en, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        #- { path: ^/user/resend-verification-mail, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        #- { path: ^/user/resend-verification-mail/fr, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        #- { path: ^/user/resend-verification-mail/en, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        #- { path: ^/user/forgotten-password, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        #- { path: ^/user/forgotten-password/fr, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        #- { path: ^/user/forgotten-password/en, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/user, roles: ROLE_USER }
+        

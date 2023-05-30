@@ -1,0 +1,9 @@
+{% extends 'email/layout.html.twig' %} 
+{% block title %}
+    <p style="margin: 0; font-size: 16px; text-align: center;"><span style="font-size:46px;color:#003188;"><strong>{{'Nouvel impaye'|trans}}</strong></span></p>
+{% endblock %}
+{% block content %}
+    <p style="margin: 0; mso-line-height-alt: 24px;"><span style="font-size:16px;color:#6d89bc;">Chers {{discount.user.profile.fullname}}, Vous avez un nouvel impaye chez {{owner.profile.civility}} {{owner.profile.fullname}}</span></p>
+    <p style="margin: 0; mso-line-height-alt: 18px;"> </p>
+    <p style="margin: 0; mso-line-height-alt: 24px;"><span style="font-size:16px;color:#6d89bc;">Montant total de la dette  : </span> {{overdue.amount}} XAF</p>
+{% endblock %}

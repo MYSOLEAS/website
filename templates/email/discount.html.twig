@@ -1,0 +1,14 @@
+{% extends 'email/layout.html.twig' %} 
+{% block title %}
+    <p style="margin: 0; font-size: 16px; text-align: center;"><span style="font-size:46px;color:#003188;"><strong>{{'Remise locative'|trans}}</strong></span></p>
+{% endblock %}
+{% block content %}
+    <p style="margin: 0; mso-line-height-alt: 24px;"><span style="font-size:16px;color:#6d89bc;">Chers {{discount.user.profile.fullname}}, Vous avez recu une remise sur le montant du bien :</span></p>
+    <p style="margin: 0; mso-line-height-alt: 18px;"> </p>
+    <p style="margin: 0; mso-line-height-alt: 24px;"><span style="font-size:16px;color:#6d89bc;">Les details sont les suivants :</span></p>
+    <p style="margin: 0; mso-line-height-alt: 24px;"><span style="font-size:16px;color:#6d89bc;">Bien en location : </span>{% if discount.estate is defined and discount.estate is not null %}{{discount.estate.type}} {{discount.estate.name}}{% else %}{{discount.housing.type}} {{discount.housing.name}}{% endif %}</p>
+    <p style="margin: 0; mso-line-height-alt: 24px;"><span style="font-size:16px;color:#6d89bc;">Montant remise  : </span> {{discount.amount}} XAF</p>
+    {% if discount.endAt is defined %}
+        <p style="margin: 0; mso-line-height-alt: 24px;"><span style="font-size:16px;color:#6d89bc;">Date de fin   : </span> {{discount.endAt|date('d/m/Y')}}</p><p style="margin: 0; mso-line-height-alt: 18px;"> </p>
+    {% endif %}
+{% endblock %}

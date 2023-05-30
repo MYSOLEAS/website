@@ -1,0 +1,136 @@
+'activated succeccesfully. new deadline': 'activé avec succes. Nouvelle date limite'
+'Inscription Reussie, Veuillez consulter votre boite mail': 'Inscription Reussie, Veuillez consulter votre boite mail'
+'Your email address has been verified': 'Votre adresse email à ete vérifiée'
+'Email invalid': 'Email invalide'
+'Utilisateur inconnu': 'Utilisateur inconnu'
+'Mail Renvoyé, verifier votre boite mail pour activer le compte!': 'Mail Renvoyé, verifier votre boite mail pour activer le compte!'
+'Check your Mailbox to update your password': 'Verifier votre boite mail pour mettre à jours votre mot de passe'
+'Token inconnu': 'Token inconnu'
+'Password update successfuly': 'Mot de passe mis à jours'
+'Mysoleas sms gateway manager': 'Mysoleas sms gateway manager'
+'Se Connecter': 'Se Connecter'
+'S''inscrire': 'S''inscrire'
+'WELCOME TO MYSOLEAS SMS MANAGER': 'BIENVENUE SUR MYSOLEAS SMS MANAGER'
+'Send sms from your e-commerce site or applications from our sms gateway in just a few clicks': 'Envoyer des sms depuis votre application ou site de e-commerce en quelques clicks seulement'
+'Our Strengths': 'Nos Atouts'
+'Low cost : send sms from 1XAF per sms': 'Prix abordable : envoyer des sms à partir de 1XAF'
+'Availability: our sms gateway is available 24 hours a day': 'Disponibilité: Passerelle disponible 24h/24'
+'Speed: Your text message is delivered within a maximum of 5 minutes after it has been sent': 'Vitesse: le message est delivré dans un delai de 5 minutes dès réception'
+'Monitoring: keep an eye on your sms while having the status of each one': 'Monitoring: un tableau de bord pour manager vos sms'
+'Security: The sms sent from our gateway are secure and visible to you only': 'Securité: les sms envoyer via notre parserelle sont uniquement visible par vous'
+'Sms length : send sms up to 160 characters for more flexibility': 'Longueur Sms : Envoyer des sms de 160 characteres pour plus de flexibilité'
+'Get Started': 'Commencer'
+'Send free sms': 'Envoyer sms gratuitement'
+'Next sms available in': 'Prochain sms disponible dans'
+Telephone: Telephone
+Message: Message
+Envoyer: Envoyer
+Cancel: Annuler
+'Mysoleas sms gateway pack': 'Mysoleas sms gateway pack'
+Veuillez: Veuillez
+'souscrire a un pack': 'souscrire a un pack'
+'afin d''avoir du credit sms': 'afin d''avoir du credit sms'
+'Valable 7 jours': 'Valable 7 jours'
+SOUSCRIRE: SOUSCRIRE
+'Valable 30 jours': 'Valable 30 jours'
+'Valable 60 jours': 'Valable 60 jours'
+'Send new sms': 'Envoyer nouveau sms'
+'Nouveau SMS': 'Nouveau SMS'
+'Buy sms Pack': 'Acheter sms Pack'
+'Confirmation souscription pack sms': 'Confirmation souscription pack sms'
+Pack: Pack
+'donne droit à': 'donne droit à'
+Montant: Montant
+Valable: Valable
+jours: jours
+'Souscription au pack sms': 'Souscription au pack sms'
+'Payer Maintenant': 'Payer Maintenant'
+Home: Acceuil
+'About Us': 'A propos'
+Services: Services
+Portfolio: Portfolio
+Team: Equipe
+'Contact Us': 'Nous Contacter'
+'Our Portfolio': 'Notre Portfolio'
+All: Tous
+'Useful Links': 'Liens Utiles'
+'About us': 'A propos'
+'Terms of service': 'Terms et condition'
+'Privacy policy': 'Politique de Confidentialité'
+Phone: Téléphone
+'Send us a message': 'Envoyer nous votre message'
+'Your message has been sent. Thank you!': 'Votre message à été envoyé. Merci!'
+'Send Message': 'Envoyer le Message'
+Testimonials: Temoignage
+Profile: Profile
+Logout: Deconnexion
+Dashboard: Mon Compte
+'Acheter un Pack': 'Acheter un Pack'
+'Send sms': 'Envoyer le sms'
+'Mon Apikey': 'Mon Apikey'
+'Utilise cette cle pour envoyer tes sms depuis ton application': 'Utilise cette clé pour envoyer tes sms depuis ton application'
+Copier: Copier
+Bienvenue: Bienvenue
+'Essaie Gratuit': 'Essaie Gratuit'
+'valide jusqu''a': 'valide jusqu''a'
+'sms restant': 'sms restant'
+'pourcentage reussite': 'pourcentage reussite'
+'Valeur en XAF': 'Valeur en XAF'
+Minimum: Minimum
+'Revendre sms inutilisés': 'Revendre sms inutilisés'
+'Rapport Sms': 'Rapport Sms'
+'Rapport sms envoye par mois': 'Rapport sms envoye par mois'
+'Derniers sms envoyés': 'Derniers sms envoyés'
+message: message
+'created At': 'Crée à'
+'Send At': 'Envoyée à'
+Status: Status
+Actions: Actions
+detail: detail
+'Aucun sms pour l''instant': 'Aucun sms pour l''instant'
+Historique: Historique
+montant: montant
+date: date
+'Aucune transaction pour l''instant': 'Aucune transaction pour l''instant'
+'Powered By': 'Powered By'
+'Remise locative': 'Remise locative'
+'Click here to Set password': 'Click ici pour creer un mot de passe'
+'Réservation Confirmee': 'Réservation Confirmee'
+'Nouvelle Réservation': 'Nouvelle Réservation'
+Welcomme: Bienvenu
+'Your Password': 'Votre mot de passe'
+'Nouveau Contrat de location': 'Nouveau Contrat de location'
+'Nouvel impaye': 'Nouvel impayé'
+'Register to mysoleas': 'S''inscrire sur Mysoleas'
+'New here': 'Nouveau Ici'
+'Signing up is easy. It only takes a few steps': 'L''inscription est simple et en quelques clicks'
+'S''INSCRIRE': 'S''INSCRIRE'
+'Already have an account': 'J''ai deja un compte'
+Login: Se Connecter
+'Activer son compte mysoleas': 'Activer son compte mysoleas'
+'Activer son compte mysoleas pour gerer vos biens immobiliers': 'Activer son compte mysoleas pour gerer vos biens immobiliers'
+'Renvoyer le mail d''activation': 'Renvoyer le mail d''activation'
+'Entrez votre email': 'Entrez votre email'
+'M''envoyer le mail d''activation': 'M''envoyer le mail d''activation'
+'Mon Compte est Actif': 'Mon Compte est Actif'
+'Me Connecter': 'Me Connecter'
+'Creer nouveau mot de passe mysoleas': 'Creer nouveau mot de passe mysoleas'
+'Creer un nouveau mot de passe mysoleas': 'Creer un nouveau mot de passe mysoleas'
+'Reinitialiser mon mot de passe': 'Reinitialiser mon mot de passe'
+'Entrez un nouveau mot de passe': 'Entrez un nouveau mot de passe'
+'Nouveau mot de passe': 'Nouveau mot de passe'
+Valider: Valider
+'J''ai mon mot de passe': 'J''ai mon mot de passe'
+'Login to mysoleas sms manager': 'Se connecter sur mysoleas sms manager'
+'Hello! let''s get started': 'Hello! commencer ici'
+'Sign in to continue': 'Se connecter et continuer'
+'SE CONNECTER': 'SE CONNECTER'
+'Keep me signed in': 'Se souvenir de moi'
+'Mot de passe oublie': 'Mot de passe oublie'
+'Don''t have an account': 'Pas encore de compte'
+'Reinitialiser son mot de passe mysoleas': 'Reinitialiser son mot de passe mysoleas'
+'M''envoyer le mail': 'M''envoyer le mail'
+Languages: Langues
+French: Français
+English: Anglais
+'derived from the activities targeted by the company, MYSOLEAS is an acronym containing the very essence of the work we do on a daily basis; thus MYSOLEAS (MY SOLUTIONS EASIEST) designates all the techniques and tools essential to offer adequate solutions to the user' : 'issu des activités visées par l''entreprise, MYSOLEAS est un sigle renfermant l''essence même du travail que nous effectuons au quotidien ; ainsi MYSOLEAS (MY SOLUTIONS EASIEST) désigne l''ensemble des techniques et outils indispensables pour proposer des solutions adéquates à l''utilisateur'

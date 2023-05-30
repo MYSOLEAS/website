@@ -1,0 +1,47 @@
+<!--==========================
+      Portfolio Section
+    ============================-->
+    <section id="portfolio" class="section-bg">
+      <div class="container">
+
+        <header class="section-header">
+          <h3 class="section-title">{{'Our Portfolio'|trans}}</h3>
+        </header>
+
+        <div class="row">
+          <div class="col-lg-12">
+            <ul id="portfolio-flters">
+              <li data-filter="*" class="filter-active">{{'All'|trans}}</li>
+              {% set array = [] %}
+              {% for portfolio in portfolios %}
+              
+              {% if portfolio.category.name not in array %}
+              <li data-filter=".filter-{{portfolio.category.name|lower}}">{{portfolio.category.name}}</li>
+                {% set array = array|merge([portfolio.category.name]) %}
+              {% endif %}
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+
+        <div class="row portfolio-container">
+            {% for portfolio in portfolios %}
+          <div class="col-lg-4 col-md-6 portfolio-item filter-{{portfolio.category|lower}}" data-wow-delay="{{loop.index / portfolios|length }}s">
+            <div class="portfolio-wrap">
+              <img src="{{asset(portfolio.image|split('public/')[1])}}" class="img-fluid" alt="{{portfolio.title}}">
+              <div class="portfolio-info">
+                <h4><a href="#">{{portfolio.title|trans}}</a></h4>
+                <p>{{portfolio.title|trans}}</p>
+                <div>
+                  <a href="{{asset(portfolio.image|split('public/')[1])}}" data-lightbox="portfolio" data-title="{{portfolio.title}}" class="link-preview" title="Preview"><i class="ion ion-eye"></i></a>
+                  <a href="#" class="link-details" title="More Details"><i class="ion ion-android-open"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+          
+
+       
+      </div>
+    </section><!-- #portfolio -->

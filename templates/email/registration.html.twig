@@ -1,0 +1,12 @@
+{% extends 'email/layout.html.twig' %} 
+{% block title %}
+    <p style="margin: 0; font-size: 16px; text-align: center;"><span style="font-size:46px;color:#003188;"><strong>Account need activation</strong></span></p>
+    {% endblock %}
+{% block content %}
+    <p style="margin: 0; mso-line-height-alt: 24px;"><span style="font-size:16px;color:#6d89bc;">Hello, Just one step left to activate your account and enjoy full service we provide</span></p>
+    <p style="margin: 0; mso-line-height-alt: 18px;"> </p>
+    <p class="text-center" style="margin: 0; mso-line-height-alt: 24px;"><span style="font-size:16px;color:#6d89bc;"><a href='{{signedUrl}}'><input class='btn btn-primary' type='button' value='click here to Activate Your Account'/></a></span></p>
+    <p style="margin: 0; mso-line-height-alt: 18px;"> </p>
+    <p style="margin: 0; mso-line-height-alt: 18px;"><span style="font-size:16px;color:#020202;">This link will expire in {{ expiresAtMessageKey|trans(expiresAtMessageData, 'VerifyEmailBundle') }}.</span></p>
+
+{% endblock %}

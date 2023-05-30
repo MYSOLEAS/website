@@ -1,0 +1,24 @@
+ <!--==========================
+      About Us Section
+    ============================-->
+    <section id="about">
+
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-5 col-md-6">
+            <div class="about-img">
+              <img src="{{asset(section.image|split("public/")[1])}}" alt="{{section.title}}">
+            </div>
+          </div>
+
+          <div class="col-lg-7 col-md-6">
+            <div class="about-content">
+              <h2>{{section.title}}</h2>
+              {{section.description|raw }}
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section><!-- #about -->

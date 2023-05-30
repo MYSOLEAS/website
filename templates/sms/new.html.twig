@@ -1,0 +1,30 @@
+{% extends 'user/layout.html.twig' %}
+{% block title %}
+    <title>{{'Send new sms'|trans}}!</title>
+    <meta content="send new sms with mysoleas sms gateway" name="description">   
+{% endblock %}
+{% block content %}
+  <div class="col-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">{{'Nouveau SMS'|trans}}</h4>
+        <form class="forms-sample" method="post" action="{{path('mysoleas_add_sms')}}">
+          <div class="form-group">
+            <label for="exampleInputName1">{{'Telephone'|trans}}</label>
+            <input type="text" class="form-control" id="exampleInputName1" placeholder="6xxxxxxxxx" name="contact" maxlength="9" required>
+          </div>
+          <div class="form-group">
+            <label for="exampleTextarea1">{{'Message'|trans}}</label>
+            <textarea class="form-control" id="exampleTextarea1" maxlength="160" rows="4" name="message" required></textarea>
+            <input type="hidden" name="key" value="{{app.user.apikey}}" readonly>
+            <input type="hidden" name="source" value="self" readonly>
+          </div>
+                    
+          <button type="submit" class="btn btn-primary mr-2">{{'Envoyer'|trans}}</button>
+          <button type="reset" class="btn btn-light">{{'Cancel'|trans}}</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

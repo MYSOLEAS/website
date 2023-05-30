@@ -1,0 +1,11 @@
+{% extends 'email/layout.html.twig' %} 
+{% block title %}
+    <p style="margin: 0; font-size: 16px; text-align: center;"><span style="font-size:46px;color:#003188;"><strong>{{'Welcomme'|trans}}</strong></span></p>
+    {% endblock %}
+{% block content %}
+    <p style="margin: 0; mso-line-height-alt: 24px;"><span style="font-size:16px;color:#6d89bc;">Hello, welcome on <strong>Immoleas</strong> your account is already rigth now.</span></p>
+    <p style="margin: 0; mso-line-height-alt: 18px;"> </p>
+    <p style="margin: 0; mso-line-height-alt: 24px;"><span style="font-size:16px;color:#6d89bc;">You can login into your account with your credentials</span></p>
+    <p style="margin: 0; mso-line-height-alt: 24px;"><span style="font-size:16px;color:#6d89bc;">Email : </span> {{user.email}}</p>
+    <p style="margin: 0; mso-line-height-alt: 24px;"><span style="font-size:16px;color:#6d89bc;">Password : </span> {{'Your Password'|trans}}</p>
+{% endblock %}
